@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Dishes - FoodChart</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your CSS styles here -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff6f61;
+            text-align: center;
+            padding: 2rem 0;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .index-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: #fff;
+            text-decoration: none;
+            margin: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .index-button:hover {
+            background-color: #ff4941;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .add-dish-form {
+            text-align: center;
+        }
+
+        .add-dish-form h2 {
+            color: #ff6f61;
+            font-size: 24px;
+        }
+
+        .add-dish-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .add-dish-form label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .add-dish-form input[type="text"],
+        .add-dish-form textarea,
+        .add-dish-form input[type="number"],
+        .add-dish-form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .add-dish-form button {
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: #fff;
+            text-decoration: none;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .add-dish-form button:hover {
+            background-color: #ff4941;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to FoodChart</h1>
+        <a href="/dashboard.html" class="index-button">Dashboard</a>
+    </header>
+
+    <main>
+        <section class="add-dish-form">
+            <h2>Add a New Dish</h2>
+            <form  method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="dish-name">Dish Name:</label>
+                <input type="text" id="dish-name" name="dishName" required>
+
+                <label for="dish-description">Dish Description:</label>
+                <textarea id="dish-description" name="dishDesc" required></textarea>
+
+                <label for="dish-price">Dish Price (in Rs):</label>
+                <input type="number" id="dish-price" name="dishPrice" step="0.01" required>
+
+                <label for="dish-image">Dish Image:</label>
+                <input type="file" id="dish-image" name="dishImage" accept="image/*">
+
+                <button type="submit">Add Dish</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

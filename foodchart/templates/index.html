@@ -1,0 +1,199 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodChart App</title>
+    <link rel="stylesheet" href="styles.css"> <!-- You can link your CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff6f61;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        header p {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .features {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .features h2 {
+            color: #ff6f61;
+            font-size: 24px;
+        }
+
+        .features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .features li {
+            margin: 10px 0;
+        }
+
+        .get-started {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .get-started h2 {
+            color: #ff6f61;
+            font-size: 24px;
+        }
+
+        .get-started p {
+            font-size: 16px;
+        }
+
+        .get-started a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: #fff;
+            text-decoration: none;
+            margin: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #ff6f61;
+            color: #fff;
+        }
+
+        .index-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: #fff;
+            text-decoration: none;
+            margin: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .index-button:hover {
+            background-color: #ff4941;
+        }
+    </style>
+</head>
+<body>
+    {% comment %} <header>
+        <div class="header-left">
+            <h1>Welcome to FoodChart</h1>
+
+            {% if request.user.is_authenticated %}
+            <a href="/logout/" class="btn-btn-dark" type="submit">Logout </a> {{ request.user }}
+            {% else %}
+            <a href="/login/" class="btn-btn-dark" type="submit">LLogin</a> 
+            {% endif %}
+
+
+            <p>Your Personal Food Tracking App</p>
+        </div>
+        <div class="header-right">
+            <a href="/services/" name="services" class="index-button">Services</a>
+            <a href="/contacts/" name="contacts" class="index-button">Contacts</a>
+            <a href="/order-food/" class="index-button">Order Food</a> 
+            <a href="/add-dishes/" class="index-button">Add Dishes</a>
+            <a href="/show-dishes/" class="index-button">Show Dishes</a>
+        </div>
+        
+    </header> {% endcomment %}
+
+    <header>
+        <div class="header-left">
+            <h1>Welcome to FoodChart</h1>
+            <p>Your Personal Food Tracking App</p>
+        </div>
+        <div class="header-right">
+            {% if request.user.is_authenticated %}
+                <div class="user-info">
+                    <p>Hello, {{ request.user }}</p>
+                    <a href="/logout/" class="btn btn-dark" type="submit">Logout</a>
+                </div>
+            {% else %}
+                <a href="/login/" class="btn btn-dark" type="submit">Login</a> 
+            {% endif %}
+    
+            <nav>
+                <a href="/services/" class="index-button">Services</a>
+                <a href="/contacts/" class="index-button">Contacts</a>
+                <a href="/order-food/" class="index-button">Order Food</a> 
+                <a href="/add-dishes/" class="index-button">Add Dishes</a>
+                <a href="/show-dishes/" class="index-button">Show Dishes</a>
+            </nav>
+        </div>
+    </header>
+    
+
+
+
+
+    <main>
+        <section class="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Track your daily food intake</li>
+                <li>Search for nutritional information</li>
+                <li>Set and monitor dietary goals</li>
+                <li>View your food consumption history</li>
+            </ul>
+        </section>
+
+        <section class="get-started">
+            <h2>Get Started</h2>
+            <p>Log in or sign up to start using FoodChart and track your food consumption.</p>
+            <a href="/login/">Login</a>
+            <a href="/register/">Sign Up</a>
+        </section>
+
+
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2023 FoodChart App</p>
+    </footer>
+
+
+{% for i in mydata %}
+<h2> Name = {{ i.name }} </h2>
+<h2> Address = {{ i.address }} </h2>
+<h2> Age = {{ i.age }} </h2>
+
+{% endfor %}
+
+
+</body>
+</html>
